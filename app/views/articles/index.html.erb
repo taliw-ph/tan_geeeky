@@ -1,21 +1,33 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
-<div> Hello rails </div>
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold underline mb-4 text-center text-blue-600">
+        Articles#index
+    </h1>
+    <p class="text-gray-700 text-center mb-6">
+        Find me in <span class="font-mono text-gray-900">app/views/articles/index.html.erb</span>
+    </p>
+    <div class="bg-blue-100 p-4 rounded-lg shadow-md text-center mb-6">
+        Hello Rails
+    </div>
 
+    <div class="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
+        <p class="text-lg text-gray-800 font-medium">
+            Our blog has <span class="text-blue-500 font-bold"><%= Article.public_count %></span> articles and counting!
+        </p>
+    </div>
 
-Our blog has <%= Article.public_count %> articles and counting!
+    <ul class="list-disc list-inside space-y-2">
+        <% @articles.each do |article| %>
+        <li class="flex items-center space-x-2">
+            <a href="<%= article_path(article) %>" class="text-blue-500 hover:text-blue-700 underline">
+                <%= article.title %>
+            </a>
+            <span class="text-gray-400">|</span>
+            <%= link_to article.title, article, class: "text-green-500 hover:text-green-700 underline" %>
+        </li>
+        <% end %>
+    </ul>
 
-<ul>
-    <% @articles.each do |article| %>
-    <li>
-        <a href="<%= article_path(article) %>">
-            <%= article.title %>
-        </a>
-    </li>
-    <li>
-        <%= link_to article.title, article %>
-    </li>
-    <% end %>
-</ul>
-
-<%= link_to "New Article", new_article_path %>
+    <div class="mt-6 text-center">
+        <%= link_to "New Article", new_article_path, class: "bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-600" %>
+    </div>
+</div>
