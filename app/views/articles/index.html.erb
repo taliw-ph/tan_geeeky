@@ -2,6 +2,9 @@
 <p>Find me in app/views/articles/index.html.erb</p>
 <div> Hello rails </div>
 
+
+Our blog has <%= Article.public_count %> articles and counting!
+
 <ul>
     <% @articles.each do |article| %>
     <li>
